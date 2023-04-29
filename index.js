@@ -12,8 +12,9 @@ const PORT = process.env.PORT;
 
 const app = express();
 app.use(helmet());
+app.use(cors());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(cors({origin:["http://localhost:3000"]}));
+//app.use(cors({origin:["http://localhost:3000"]}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
