@@ -2,6 +2,7 @@ import { getDataByDecade, getDecades, getData } from "./controllers/data.js";
 import { getAggDataByAssetName } from "./controllers/aggData.js";
 import { fetchData } from "./fetchData/fetchData.js";
 import { connectAndInsertData, connectAndInsertAggData } from "./uploadData/data.js";
+import helmet from "helmet";
 import cors from 'cors';
 import dotenv from "dotenv";
 import express from "express";
@@ -10,8 +11,9 @@ dotenv.config();
 const PORT = process.env.PORT;
 
 const app = express();
-app.use(cors({origin: 'http://localhost:3000/'})); 
-
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(cors({origin:["http://localhost:3000/"]}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
