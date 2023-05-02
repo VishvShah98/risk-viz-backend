@@ -1,11 +1,10 @@
 
 import mongoose from "mongoose";
-
 import { DataModel } from "../types/types.js";
 import dotenv from "dotenv";
 dotenv.config();
-const uri = process.env.MONGO_URL;
 
+const uri = process.env.MONGO_URL;
 
 export const getDataByDecade = async (req, res) => {
     try {
